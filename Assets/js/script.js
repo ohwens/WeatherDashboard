@@ -7,9 +7,8 @@ var coordinatesURL = ''
 var cityLat = ''
 var cityLon = ''
 var oneCallUrl = ''
-var currentWeather = {}
-var currentWeatherIcon = ''
-
+var currentWeather
+var currentDate = moment().format('l')
 
 
 function ingestCityInput(event) {
@@ -41,8 +40,12 @@ function ingestCityInput(event) {
             console.log(data.current.weather[0])
             currentWeather = data.current.weather[0]
             console.log(currentWeather.icon)
+
+            var currentStatusHeader = document.createElement('div');
+            currentStatus.appendChild(currentStatusHeader);
+    
+            currentStatusHeader.textContent = currentWeather.icon
         })
-        currentStatus.textContent = currentWeather.icon
 
     })
 
