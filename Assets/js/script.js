@@ -16,6 +16,7 @@ function ingestCityInput(event) {
     console.log(event);
     console.log(cityInput.value)
     selectedCity = cityInput.value
+    selectedCity = selectedCity.toUpperCase()
     coordinatesURL = 'https://api.openweathermap.org/geo/1.0/direct?q=' + selectedCity + '&appid=' + apiKey
 
     fetch(coordinatesURL)
@@ -41,10 +42,10 @@ function ingestCityInput(event) {
             currentWeather = data.current.weather[0]
             console.log(currentWeather.icon)
 
-            var currentStatusHeader = document.createElement('div');
+            var currentStatusHeader = document.createElement('h4');
             currentStatus.appendChild(currentStatusHeader);
     
-            currentStatusHeader.textContent = currentWeather.icon
+            currentStatusHeader.textContent = selectedCity + ' (' + currentDate + ') ' + currentWeather.description;
         })
 
     })
